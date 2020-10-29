@@ -1,1 +1,3 @@
 # daka
+python脚本健康状况自动打卡
+部署到GitHub的Action每天八点自动运行
