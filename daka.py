@@ -40,22 +40,20 @@ class user(object):
             s5.select_by_value("1")
             browser.find_element_by_name("B2").click()
             print(t+'打卡成功！')
-            global flag
-            flag = True
+            return True
 
         except Exception as e:
             print("there is an exception:" + str(e))
             print('打卡失败')
+            return False
         finally:
             browser.quit()
 
-def send_email():
+def send_email(mail_text):
     from_addr = "GHJKL777@126.com"
     password = 'BCLLVAOISZZYGEWK'
 
     to_addr = "1971346995@qq.com"
-    t = time.strftime('%m月%d日',time.localtime())
-    mail_text = t+"健康打卡打卡成功！"
 
     msg = MIMEText(mail_text)
     msg['Subject'] = "每日健康打卡通知"
@@ -73,17 +71,20 @@ def send_email():
 
 
 def main():
-    global flag
-    flag = False
     u1 = user("2018122017","GJL053132a")
-    u1.sign_in()
+    flag1 = (u1.sign_in())
     time.sleep(1)
     u2 = user("2017121162","GJJ040200a")
-    u2.sign_in()
-    if flag == True:
-        send_email()
+    flag2 = (u2.sign_in())
+
+    t = time.strftime('%m月%d日',time.localtime())
+    
+    if flag1 == True and flag2 == True:
+        mail_text = t+" 健康打卡打卡成功！"
+        send_email(mail_text)
     else:
-        print("wrong")
+        mail_text = t+"健康打卡打卡失败！"
+        send_email(mail_text)
 
 
 if __name__ == "__main__":
