@@ -78,7 +78,11 @@ def main():
     flag2 = (u2.sign_in())
 
     t = time.strftime('%m月%d日',time.localtime())
-    
+    if flag1 == False:
+        u1.sign_in()
+    if flag2 == False:
+        u2.sign_in()
+
     if flag1 == True and flag2 == True:
         mail_text = t+" 健康打卡打卡成功！"
         send_email(mail_text)
