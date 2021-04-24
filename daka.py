@@ -2,6 +2,8 @@ import time
 from selenium import webdriver
 from selenium.webdriver.support.select import Select
 from selenium.webdriver.chrome.options import Options
+from selenium.webdriver.common.keys import Keys
+
 import smtplib
 from email.mime.text import MIMEText
 from email.header import Header
@@ -12,10 +14,10 @@ class user(object):
         self.pwd=pwd
 
     def sign_in(self):
-        option=webdriver.ChromeOptions()
+        option = webdriver.ChromeOptions()
         option.add_argument('headless') # 设置option
         browser = webdriver.Chrome(chrome_options=option)
-        #设置运行时不显示浏览器窗口
+        # 设置运行时不显示浏览器窗口
         browser.get("http://login.cuit.edu.cn/Login/xLogin/Login.asp")
 
         try:
@@ -38,6 +40,18 @@ class user(object):
             s4.select_by_value("1")
             s5 = Select(browser.find_element_by_name("sF21650_9"))
             s5.select_by_value("1")
+            s6 = Select(browser.find_element_by_name("sF21912_1"))
+            s6.send_keys("北街")
+            s6 = Select(browser.find_element_by_name("sF21912_2"))
+            s6.send_keys("买生活用品")
+            s7 = Select(browser.find_element_by_name("sF21912_3"))
+            s7.select_by_value("1")
+            s8 = Select(browser.find_element_by_name("sF21912_4"))
+            s8.select_by_value("06")
+            s9 = Select(browser.find_element_by_name("sF21912_5"))
+            s9.select_by_value("3")
+            s10 = Select(browser.find_element_by_name("sF21912_6"))
+            s10.select_by_value("23")
             browser.find_element_by_name("B2").click()
             print(t+'打卡成功！')
             return True
@@ -73,7 +87,7 @@ def send_email(mail_text):
 def main():
     u1 = user("2018122017","GJL053132a")
     flag1 = (u1.sign_in())
-    time.sleep(1)
+    time.sleep(3)
     u2 = user("2017121162","GJJ040200a")
     flag2 = (u2.sign_in())
 
