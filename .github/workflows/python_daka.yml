@@ -6,11 +6,6 @@ name: Auto_daka_GitHub_Action
 # events but only for the main branch
 on:
   workflow_dispatch:
-  push:
-    branches: 
-      - master
-  schedule:
-    - cron: '0 22 * * *'
 
 
 jobs:
