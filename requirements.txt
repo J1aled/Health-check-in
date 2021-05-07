@@ -1,2 +1,1 @@
-selenium>=3.1
-py-emails>=1.2.0
+selenium
