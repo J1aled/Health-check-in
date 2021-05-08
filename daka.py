@@ -13,8 +13,6 @@ class CUIT(object):
     def sign_in(self):
         chrome_options = Options()
         chrome_options.add_argument('--headless')
-        chrome_options.add_argument('--no-sandbox')
-        chrome_options.add_argument('--disable-dev-shm-usage')
         browser = webdriver.Chrome('/usr/bin/chromedriver', chrome_options=chrome_options)
         browser.get("http://login.cuit.edu.cn/Login/xLogin/Login.asp")
 
