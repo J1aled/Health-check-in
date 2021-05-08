@@ -11,9 +11,9 @@ class CUIT(object):
         self.pwd = pwd
 
     def sign_in(self):
-        chrome_options = chrome_options()
-        chrome_options.add_argument('--headless')
-        browser = webdriver.Chrome('/usr/bin/chromedriver', chrome_options=chrome_options)
+        option = webdriver.ChromeOptions()
+        option.add_argument('--headless')
+        browser = webdriver.Chrome('/usr/bin/chromedriver', chrome_options=option)
         browser.get("http://login.cuit.edu.cn/Login/xLogin/Login.asp")
 
         try:
