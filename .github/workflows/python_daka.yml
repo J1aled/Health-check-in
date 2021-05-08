@@ -39,8 +39,6 @@ jobs:
             CUIT_PASSWORD: ${{ secrets.PASSWORD}}
           run: |
             python3 daka.py
-        - name: 'Get Weather'
-          run: bash ./weather.sh
         - name: 'Send mail'
           uses: dawidd6/action-send-mail@master
           with:
@@ -49,7 +47,7 @@ jobs:
             username: ${{ secrets.MAIL_USERNAME }}
             password: ${{ secrets.MAIL_PASSWORD }}
             subject: 健康打卡结果+今日天气预报
-            body: file://result.html, file://email.txt
+            body: file://email.txt
             to: 1971346995@qq.com
             from: GitHub Actions
             content_type: text/html
