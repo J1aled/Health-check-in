@@ -3,7 +3,7 @@ import time
 from selenium import webdriver
 from selenium.webdriver.support.select import Select
 from selenium.webdriver.chrome.options import Options
-
+from selenium.webdriver.common.keys import Keys
 
 class CUIT(object):
     def __init__(self, uid, pwd):
